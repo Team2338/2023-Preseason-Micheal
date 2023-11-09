@@ -3,6 +3,9 @@ package team.gif.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Robot;
 
+/**
+ * Command to automatically drive arcade based on the drivers left joystick.
+ */
 public class DriveArcade extends CommandBase {
 
     public DriveArcade() {
@@ -32,6 +35,6 @@ public class DriveArcade extends CommandBase {
     // Called when the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        Robot.drivetrain.driveArcade(0,0);
+//        Robot.drivetrain.driveArcade(0,0);
     }
 }
