@@ -22,6 +22,23 @@ public class MoveArm extends CommandBase {
         double commandSpeed = Robot.oi.aux.getLeftY();
         double armSpeed = .5;
         double winchSpeed = commandSpeed;
+
+        double armAngle = Robot.arm.getEncorder();
+        double[] angles = Robot.arm.getCurrentLimits();
+        if (armAngle < angles[0]) {
+            if (commandSpeed < 0) {
+                winchSpeed = 0;
+                armSpeed = 0;
+            }
+        } else if (armAngle > angles[1]) {
+            if (commandSpeed > 0) {
+                winchSpeed = 0;
+                armSpeed = 0;
+            }
+        }
+
+
+
         Robot.arm.moveArm(armSpeed, winchSpeed);
     }
 
