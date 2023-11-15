@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import team.gif.robot.commands.CollectorMotor;
 import team.gif.robot.subsystems.Collector;
 
 /**
@@ -36,7 +37,7 @@ public class Robot extends TimedRobot {
     oi = new OI();
     collector = new Collector();
     uiSmartDashboard = new UiSmartDashboard();
-
+    collector.setDefaultCommand(new CollectorMotor());
   }
 
   /**
