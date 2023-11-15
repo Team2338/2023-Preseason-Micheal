@@ -3,9 +3,9 @@ package team.gif.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Robot;
 
-public class LeftJoystickCIM extends CommandBase {
+public class DriveRobot extends CommandBase {
 
-    public LeftJoystickCIM() {
+    public DriveRobot() {
         super();
         addRequirements(Robot.driveTrain);
         //addRequirements(Robot.climber); // uncomment
