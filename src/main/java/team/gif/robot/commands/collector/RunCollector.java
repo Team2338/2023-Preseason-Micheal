@@ -20,7 +20,7 @@ public class RunCollector extends CommandBase {
     public void execute() {
         //TODO: This needs to be tuned
         double eject = Robot.oi.aux.getLeftTriggerAxis();
-        double collect = Robot.oi.driver.getLeftTriggerAxis();
+        double collect = Robot.oi.aux.getLeftTriggerAxis();
         double speed;
         /*
         This is how we will be determining which direction to run.
