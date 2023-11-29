@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.robot.commands.MoveArm;
 import team.gif.robot.subsystems.Arm;
+import team.gif.robot.commands.drivetrain.DriveArcade;
+import team.gif.robot.subsystems.Drivetrain;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -21,6 +23,7 @@ public class Robot extends TimedRobot {
   private RobotContainer robotContainer;
   public static OI oi;
 
+  public static Drivetrain drivetrain;
   public static Arm arm;
 
 
@@ -32,6 +35,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+      drivetrain = new Drivetrain();
+      drivetrain.setDefaultCommand(new DriveArcade());
+
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     robotContainer = new RobotContainer();
