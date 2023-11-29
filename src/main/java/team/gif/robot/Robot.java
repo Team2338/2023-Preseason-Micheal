@@ -7,6 +7,7 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import team.gif.robot.subsystems.Arm;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -18,7 +19,7 @@ public class Robot extends TimedRobot {
   private static Command autonomousCommand;
   private RobotContainer robotContainer;
   public static OI oi;
-
+  public static Arm arm;
 
   public static UiSmartDashboard uiSmartDashboard;
 
@@ -33,6 +34,7 @@ public class Robot extends TimedRobot {
     robotContainer = new RobotContainer();
     oi = new OI();
     uiSmartDashboard = new UiSmartDashboard();
+    arm = new Arm();
   }
 
   /**
