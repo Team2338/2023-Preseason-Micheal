@@ -4,6 +4,7 @@
 
 package team.gif.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,9 +15,12 @@ public class Drivetrain extends SubsystemBase {
   private WPI_TalonSRX rMotor;
   private WPI_TalonSRX lMotor;
   public Drivetrain() {
-    lMotor.configFactoryDefault();
     lMotor = new WPI_TalonSRX(RobotMap.LEFT_MOTOR_ID);
     rMotor = new WPI_TalonSRX(RobotMap.RIGHT_MOTOR_ID);
+    lMotor.configFactoryDefault();
+    rMotor.configFactoryDefault();
+    lMotor.setNeutralMode(NeutralMode.Brake);
+    rMotor.setNeutralMode(NeutralMode.Brake);
 
     drive = new DifferentialDrive(lMotor, rMotor);
   }
