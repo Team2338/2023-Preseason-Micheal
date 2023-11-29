@@ -5,6 +5,7 @@
 package team.gif.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -18,6 +19,8 @@ public class Arm extends SubsystemBase {
   private final double armMin = 0;
   private final double[] armMax = {0, 0, 0};
   private int currentLimitIndex = 0;
+  private double currentWinchSpeed;
+
   public Arm() {
     winch = new TalonSRX(RobotMap.WINCH_MOTOR_ID);
 
@@ -26,12 +29,24 @@ public class Arm extends SubsystemBase {
     encoder = winch.getSelectedSensorPosition();
 
     winch.configFactoryDefault();
+
+    winch.setNeutralMode(NeutralMode.Brake);
+
+    winch.setSelectedSensorPosition(0, 0, 10);
+    winch.setSensorPhase(false);
+
+    winch.configReverseSoftLimitThreshold(degreesToEncoder(armMin), 10); //TODO: Numbers here
+    winch.configForwardSoftLimitThreshold(degreesToEncoder(armMax[0]), 10); //TODO: Numbers Here
+
+    winch.configReverseSoftLimitEnable(true, 10);
+    winch.configForwardSoftLimitEnable(true, 10);
   }
 
   /**
    * @param winchPercent Value from -1 to 1 for the winch speed
    */
   public void moveArm(double winchPercent) {
+    currentWinchSpeed = winchPercent;
     winch.set(TalonSRXControlMode.PercentOutput, winchPercent);
   }
 
@@ -41,6 +56,14 @@ public class Arm extends SubsystemBase {
    */
   public double getEncoder() {
     return encoder;
+  }
+  public double getWinchSpeed() {
+    return currentWinchSpeed;
+  }
+
+  public double degreesToEncoder(double encoderValue) {
+    return encoderValue;
+    //TODO: MATH
   }
 
   /**
@@ -55,5 +78,7 @@ public class Arm extends SubsystemBase {
     if (currentLimitIndex < index) {
       currentLimitIndex = index;
     }
+
+    winch.configForwardSoftLimitThreshold((double) degreesToEncoder(armMax[1]), 10);
   }
 }
