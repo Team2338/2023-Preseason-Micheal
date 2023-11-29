@@ -7,6 +7,7 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import team.gif.robot.commands.arm.MoveWinch;
 import team.gif.robot.subsystems.Arm;
 
 /**
@@ -35,6 +36,7 @@ public class Robot extends TimedRobot {
     oi = new OI();
     uiSmartDashboard = new UiSmartDashboard();
     arm = new Arm();
+    arm.setDefaultCommand(new MoveWinch());
   }
 
   /**
