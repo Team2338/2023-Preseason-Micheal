@@ -23,6 +23,7 @@ public class Drivetrain extends SubsystemBase {
     rMotor.setNeutralMode(NeutralMode.Brake);
 
     drive = new DifferentialDrive(lMotor, rMotor);
+    drive.setDeadband(0.05);
   }
 
   /**
