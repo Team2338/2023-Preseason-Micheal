@@ -13,7 +13,7 @@ public class OI {
      * public final Trigger dA = driver.a();
      */
 
-    public final CommandXboxController driver = new CommandXboxController(RobotMap.DRIVER_CONTROLLER_ID);
+    public static final CommandXboxController driver = new CommandXboxController(RobotMap.DRIVER_CONTROLLER_ID);
     public final CommandXboxController aux = new CommandXboxController(RobotMap.AUX_CONTROLLER_ID);
     public final CommandXboxController test = new CommandXboxController(RobotMap.TEST_CONTROLLER_ID);
 
