@@ -1,4 +1,4 @@
-package team.gif.robot.commands;
+package team.gif.robot.commands.arm;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Robot;
@@ -19,27 +19,24 @@ public class MoveArm extends CommandBase {
     @Override
     public void execute() {
         //TODO: This needs values
-        double commandSpeed = Robot.oi.aux.getLeftY();
-        double armSpeed = .5;
+        double commandSpeed = Robot.oi.aux.getRightY();
         double winchSpeed = commandSpeed;
 
-        double armAngle = Robot.arm.getEncorder();
+        double armAngle = Robot.arm.getEncoder();
         double[] angles = Robot.arm.getCurrentLimits();
         if (armAngle < angles[0]) {
             if (commandSpeed < 0) {
                 winchSpeed = 0;
-                armSpeed = 0;
             }
         } else if (armAngle > angles[1]) {
             if (commandSpeed > 0) {
                 winchSpeed = 0;
-                armSpeed = 0;
             }
         }
 
 
 
-        Robot.arm.moveArm(armSpeed, winchSpeed);
+        Robot.arm.moveArm(winchSpeed);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.

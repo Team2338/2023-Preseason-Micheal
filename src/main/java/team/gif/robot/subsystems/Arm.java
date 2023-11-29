@@ -4,45 +4,43 @@
 
 package team.gif.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel;
-import edu.wpi.first.wpilibj.CounterBase;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import team.gif.robot.RobotMap;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class Arm extends SubsystemBase {
 
-  private CANSparkMax winch;
-  private TalonSRX arm;
-  private Encoder encoder;
+  private TalonSRX winch;
+  private double encoder;
   private final double armMin = 0;
   private final double[] armMax = {0, 0, 0};
   private int currentLimitIndex = 0;
   public Arm() {
-    arm = new TalonSRX(RobotMap.ARM_MOTOR_ID);
-    winch = new CANSparkMax(RobotMap.WINCH_MOTOR_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
-    encoder = new Encoder(RobotMap.ENCODER_ID_A, RobotMap.ENCODER_ID_B, false, CounterBase.EncodingType.k2X);
+    winch = new TalonSRX(RobotMap.WINCH_MOTOR_ID);
+
+
+    winch.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    encoder = winch.getSelectedSensorPosition();
+
+    winch.configFactoryDefault();
   }
 
   /**
-   * @param armPercent Value from -1 to 1 for the arm speed
    * @param winchPercent Value from -1 to 1 for the winch speed
    */
-  public void moveArm(double armPercent, double winchPercent) {
-    arm.set(TalonSRXControlMode.PercentOutput, armPercent);
-    winch.set(winchPercent);
+  public void moveArm(double winchPercent) {
+    winch.set(TalonSRXControlMode.PercentOutput, winchPercent);
   }
 
   /**
    *
    * @return double: the current value of the arm encoder
    */
-  public double getEncorder() {
-    return encoder.get();
+  public double getEncoder() {
+    return encoder;
   }
 
   /**
