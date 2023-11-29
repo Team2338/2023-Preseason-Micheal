@@ -18,5 +18,7 @@ public class UI {
     public UI() {
         ShuffleboardTab shuffleboardTab = Shuffleboard.getTab("BAB");
 
+        shuffleboardTab.addDouble("Arm Position", Robot.arm::getEncoder);
+
     }
 }
