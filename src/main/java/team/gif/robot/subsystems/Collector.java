@@ -6,18 +6,21 @@ package team.gif.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import team.gif.robot.RobotMap;
 
 public class Collector extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  private TalonSRX collector = new TalonSRX(RobotMap.COLLECTOR_ID);
+  private TalonSRX collector;
   public Collector() {
-    collector.configFactoryDefault();
+    collector = new TalonSRX(RobotMap.COLLECTOR_ID);
+
+    //collector.configFactoryDefault();
   }
 
   public void runCollector(double speed) {
+
+//    System.out.println("good one" + speed);
     collector.set(TalonSRXControlMode.PercentOutput, speed);
   }
 }

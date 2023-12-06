@@ -3,9 +3,9 @@ package team.gif.robot.commands.arm;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Robot;
 
-public class MoveArm extends CommandBase {
+public class ZeroEncoder extends CommandBase {
 
-    public MoveArm() {
+    public ZeroEncoder() {
         super();
         addRequirements(Robot.arm);
         //addRequirements(Robot.climber); // uncomment
@@ -13,17 +13,14 @@ public class MoveArm extends CommandBase {
 
     // Called when the command is initially scheduled.
     @Override
-    public void initialize() {}
+    public void initialize() {
+        Robot.arm.zeroEncoder();
+        System.out.println("ZEROOOOOOOO");
+    }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
-    public void execute() {
-        //TODO: This needs values
-        double commandSpeed = Robot.oi.aux.getRightY();
-
-
-        Robot.arm.moveArm(commandSpeed);
-    }
+    public void execute() {}
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
     @Override

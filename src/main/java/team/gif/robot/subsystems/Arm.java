@@ -14,29 +14,26 @@ import team.gif.robot.RobotMap;
 @SuppressWarnings("FieldMayBeFinal")
 public class Arm extends SubsystemBase {
 
-  private TalonSRX winch;
-  private double encoder;
-  private final double armMin = 0;
-  private final double[] armMax = {0, 0, 0};
+  public TalonSRX winch;
+  private final double armMin = 13875;
+  private final double[] armMax = {2500, 0, 0};
   private int currentLimitIndex = 0;
   private double currentWinchSpeed;
 
   public Arm() {
     winch = new TalonSRX(RobotMap.WINCH_MOTOR_ID);
 
+    winch.configFactoryDefault();
 
     winch.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
-    encoder = winch.getSelectedSensorPosition();
-
-    winch.configFactoryDefault();
 
     winch.setNeutralMode(NeutralMode.Brake);
 
-    winch.setSelectedSensorPosition(0, 0, 10);
-    winch.setSensorPhase(false);
+    winch.setSelectedSensorPosition(0);
+    winch.setSensorPhase(true);
 
-    winch.configReverseSoftLimitThreshold(degreesToEncoder(armMin), 10); //TODO: Numbers here
-    winch.configForwardSoftLimitThreshold(degreesToEncoder(armMax[0]), 10); //TODO: Numbers Here
+    winch.configForwardSoftLimitThreshold(armMin, 10);
+    winch.configReverseSoftLimitThreshold(armMax[0], 10);
 
     winch.configReverseSoftLimitEnable(true, 10);
     winch.configForwardSoftLimitEnable(true, 10);
@@ -50,35 +47,30 @@ public class Arm extends SubsystemBase {
     winch.set(TalonSRXControlMode.PercentOutput, winchPercent);
   }
 
+  public void zeroEncoder() {
+    winch.setSelectedSensorPosition(0);
+  }
+
   /**
    *
    * @return double: the current value of the arm encoder
    */
   public double getEncoder() {
-    return encoder;
+    return winch.getSelectedSensorPosition();
   }
   public double getWinchSpeed() {
     return currentWinchSpeed;
   }
 
-  public double degreesToEncoder(double encoderValue) {
-    return encoderValue;
-    //TODO: MATH
-  }
-
   /**
-   * Returns the current limits on the arm movement
-   * @return array of doubles in this format [arm min, arm max]
+   *
+   * @param index = index of the max to extend the arm to. 0 = default, smallest rotation 1 = bigger than 0
    */
-  public double[] getCurrentLimits() {
-    return new double[]{armMin, armMax[currentLimitIndex]};
-  }
-
   public void advanceArmLimit(int index) {
     if (currentLimitIndex < index) {
       currentLimitIndex = index;
     }
 
-    winch.configForwardSoftLimitThreshold((double) degreesToEncoder(armMax[1]), 10);
+    winch.configReverseSoftLimitThreshold(armMax[1], 10);
   }
 }

@@ -1,13 +1,14 @@
-package team.gif.robot.commands;
+package team.gif.robot.commands.arm;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Robot;
 
 public class AdvanceLimit extends CommandBase {
     private int index;
-    public AdvanceLimit(int index) {
+    public AdvanceLimit(int indexIn) {
         super();
         addRequirements(Robot.arm);
+        index  = indexIn;
         //addRequirements(Robot.climber); // uncomment
     }
 

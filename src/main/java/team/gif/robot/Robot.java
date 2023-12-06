@@ -7,8 +7,9 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import team.gif.robot.commands.collector.RunCollector;
 import team.gif.robot.subsystems.Collector;
-import team.gif.robot.commands.MoveArm;
+import team.gif.robot.commands.arm.MoveArm;
 import team.gif.robot.subsystems.Arm;
 import team.gif.robot.commands.drivetrain.DriveArcade;
 import team.gif.robot.subsystems.Drivetrain;
@@ -30,6 +31,7 @@ public class Robot extends TimedRobot {
 
 
   public static UiSmartDashboard uiSmartDashboard;
+  public static UI ui;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -44,10 +46,12 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     robotContainer = new RobotContainer();
     collector = new Collector();
+    collector.setDefaultCommand(new RunCollector());
     arm = new Arm();
     arm.setDefaultCommand(new MoveArm());
     oi = new OI();
     uiSmartDashboard = new UiSmartDashboard();
+    ui = new UI();
   }
 
   /**
@@ -66,6 +70,7 @@ public class Robot extends TimedRobot {
     CommandScheduler.getInstance().run();
 
     uiSmartDashboard.updateUI();
+
 
   }
 
