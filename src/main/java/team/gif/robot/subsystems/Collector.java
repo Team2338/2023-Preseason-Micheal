@@ -14,7 +14,7 @@ public class Collector extends SubsystemBase {
   private TalonSRX collector;
   public Collector() {
     collector = new TalonSRX(RobotMap.COLLECTOR_ID);
-
+    collector.setInverted(true);
     //collector.configFactoryDefault();
   }
 

@@ -19,7 +19,7 @@ public class MoveArm extends CommandBase {
     @Override
     public void execute() {
         //TODO: This needs values
-        double commandSpeed = Robot.oi.aux.getRightY();
+        double commandSpeed = Robot.oi.driver.getRightY();
 
 
         Robot.arm.moveArm(commandSpeed);

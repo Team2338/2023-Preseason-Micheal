@@ -28,21 +28,31 @@ public class MoveSlow extends CommandBase {
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        double speed = 0.1; //10% power
+        double speed = 0.6; //10% power
         double rotation = 0;
+
+        System.out.println("running");
+
+        System.out.println(speed);
+        System.out.println(rotation);
 
         if (moveDirection == 1) {
             // Direction Rotate Right
-            rotation = 0.1;
+            speed = 0;
+            rotation = 0.55;
+            System.out.println("right");
         } else if (moveDirection == 2) {
             //Direction Backwards
-            speed = -0.1;
+            speed = -0.6;
+            System.out.println("backward");
         } else if (moveDirection == 3) {
             //Direction Rotate Left
-            rotation = -0.1;
+            speed = 0;
+            rotation = -0.55;
+            System.out.println("left");
         }
 
-        Robot.drivetrain.driveArcade(speed, rotation);
+        Robot.drivetrain.driveArcade(rotation, -speed);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.

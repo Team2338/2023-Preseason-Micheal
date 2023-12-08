@@ -87,7 +87,14 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+
+    //Move forwards X feet
+    //Lower arm
+    //Run collector
+
+
+  }
 
   @Override
   public void teleopInit() {

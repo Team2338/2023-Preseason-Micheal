@@ -23,17 +23,13 @@ public class RunCollector extends CommandBase {
         double collect = Robot.oi.driver.getRawAxis(2);
         double speed;
 
-        System.out.println(collect);
-        System.out.println(eject);
-
-
         /*
         This is how we will be determining which direction to run.
         If eject is greater that collect we run that, otherwise its always
         collect.
         */
         if (eject > collect) {
-            speed = -eject/2;
+            speed = -eject/1.5;
         } else if (collect > eject) {
             speed = collect;
         } else {
