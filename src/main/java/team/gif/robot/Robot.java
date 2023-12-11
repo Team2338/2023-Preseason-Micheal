@@ -13,6 +13,7 @@ import team.gif.robot.commands.arm.MoveArm;
 import team.gif.robot.subsystems.Arm;
 import team.gif.robot.commands.drivetrain.DriveArcade;
 import team.gif.robot.subsystems.Drivetrain;
+import team.gif.robot.subsystems.driver.Pigeon;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -29,6 +30,8 @@ public class Robot extends TimedRobot {
   public static Drivetrain drivetrain;
   public static Arm arm;
 
+  public static Pigeon pigeon;
+
 
   public static UiSmartDashboard uiSmartDashboard;
   public static UI ui;
@@ -39,6 +42,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    pigeon = new Pigeon(RobotMap.LEFT_MOTOR_ID);
       drivetrain = new Drivetrain();
       drivetrain.setDefaultCommand(new DriveArcade());
 
