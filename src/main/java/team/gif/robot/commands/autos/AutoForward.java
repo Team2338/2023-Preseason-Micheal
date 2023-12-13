@@ -15,14 +15,18 @@ public class AutoForward extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-
+        Robot.pigeon.resetPigeonPosition();
+        //pigeon now 0
         System.out.println("runnging drivetrain");
     }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        Robot.drivetrain.driveArcade(-0.8, -0.1); //TODO: keep straight using pigeon
+        double error = 0 - Robot.pigeon.getHeading();
+        double gain = 0.02;
+        double rot = error * gain;
+        Robot.drivetrain.driveArcade(-0.8, rot); //TODO: keep straight using pigeon
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.

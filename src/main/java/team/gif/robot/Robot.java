@@ -44,6 +44,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     pigeon = new Pigeon(RobotMap.LEFT_MOTOR_ID);
+    pigeon.addToShuffleboard("TEAM DOMINIC", "HEADING");
     drivetrain = new Drivetrain();
     drivetrain.setDefaultCommand(new DriveArcade());
 
