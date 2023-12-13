@@ -14,13 +14,12 @@ public class Collector extends SubsystemBase {
   private TalonSRX collector;
   public Collector() {
     collector = new TalonSRX(RobotMap.COLLECTOR_ID);
+    collector.configFactoryDefault();
     collector.setInverted(true);
-    //collector.configFactoryDefault();
   }
 
   public void runCollector(double speed) {
 
-//    System.out.println("good one" + speed);
     collector.set(TalonSRXControlMode.PercentOutput, speed);
   }
 }

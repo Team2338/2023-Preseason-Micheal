@@ -5,8 +5,10 @@
 package team.gif.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import team.gif.robot.commands.autos.AutosGroup;
 import team.gif.robot.commands.collector.RunCollector;
 import team.gif.robot.subsystems.Collector;
 import team.gif.robot.commands.arm.MoveArm;
@@ -43,8 +45,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     pigeon = new Pigeon(RobotMap.LEFT_MOTOR_ID);
-      drivetrain = new Drivetrain();
-      drivetrain.setDefaultCommand(new DriveArcade());
+    drivetrain = new Drivetrain();
+    drivetrain.setDefaultCommand(new DriveArcade());
 
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
@@ -56,6 +58,7 @@ public class Robot extends TimedRobot {
     oi = new OI();
     uiSmartDashboard = new UiSmartDashboard();
     ui = new UI();
+    autonomousCommand = new AutosGroup();
   }
 
   /**
@@ -97,7 +100,7 @@ public class Robot extends TimedRobot {
     //Lower arm
     //Run collector
 
-
+    new AutosGroup().schedule();
   }
 
   @Override
