@@ -7,12 +7,14 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import team.gif.robot.commands.autos.AutosGroup;
 import team.gif.robot.commands.collector.RunCollector;
 import team.gif.robot.subsystems.Collector;
 import team.gif.robot.commands.arm.MoveArm;
 import team.gif.robot.subsystems.Arm;
 import team.gif.robot.commands.drivetrain.DriveArcade;
 import team.gif.robot.subsystems.Drivetrain;
+import team.gif.robot.subsystems.driver.Pigeon;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -29,6 +31,8 @@ public class Robot extends TimedRobot {
   public static Drivetrain drivetrain;
   public static Arm arm;
 
+  public static Pigeon pigeon;
+
 
   public static UiSmartDashboard uiSmartDashboard;
   public static UI ui;
@@ -39,8 +43,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-      drivetrain = new Drivetrain();
-      drivetrain.setDefaultCommand(new DriveArcade());
+    pigeon = new Pigeon(RobotMap.LEFT_MOTOR_ID);
+    drivetrain = new Drivetrain();
+    drivetrain.setDefaultCommand(new DriveArcade());
 
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
@@ -52,6 +57,7 @@ public class Robot extends TimedRobot {
     oi = new OI();
     uiSmartDashboard = new UiSmartDashboard();
     ui = new UI();
+    autonomousCommand = new AutosGroup();
   }
 
   /**
@@ -83,7 +89,10 @@ public class Robot extends TimedRobot {
 
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
-  public void autonomousInit() {}
+  public void autonomousInit() {
+    new AutosGroup().schedule();
+
+  }
 
   /** This function is called periodically during autonomous. */
   @Override
@@ -92,7 +101,6 @@ public class Robot extends TimedRobot {
     //Move forwards X feet
     //Lower arm
     //Run collector
-
 
   }
 

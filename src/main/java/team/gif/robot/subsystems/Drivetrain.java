@@ -27,10 +27,10 @@ public class Drivetrain extends SubsystemBase {
   }
 
   /**
-   * @param spd Robot speed
    * @param rot Turn angle
+   * @param spd Robot speed
    */
-  public void driveArcade(double spd, double rot) {
+  public void driveArcade(double rot, double spd) {
     drive.arcadeDrive(spd, rot);
   }
 

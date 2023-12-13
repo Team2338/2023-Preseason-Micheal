@@ -1,29 +1,26 @@
-package team.gif.robot.commands.drivetrain;
+package team.gif.robot.commands.arm;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Robot;
 
-/**
- * Command to automatically drive arcade based on the drivers left joystick.
- */
-public class DriveArcade extends CommandBase {
+public class OverrideArm extends CommandBase {
 
-    public DriveArcade() {
+    public OverrideArm() {
         super();
-        addRequirements(Robot.drivetrain);
+        addRequirements(Robot.arm);
         //addRequirements(Robot.climber); // uncomment
     }
 
     // Called when the command is initially scheduled.
     @Override
-    public void initialize() {}
+    public void initialize() {
+        Robot.arm.disableLimit();
+    }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        double speed = Robot.oi.driver.getLeftX();
-        double rot = Robot.oi.driver.getLeftY();
-        Robot.drivetrain.driveArcade(rot, speed);
+        Robot.arm.moveArm(-0.3); //TODO: Make this a good number
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
@@ -35,6 +32,6 @@ public class DriveArcade extends CommandBase {
     // Called when the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-//        Robot.drivetrain.driveArcade(0,0);
+        Robot.arm.enableLimit();
     }
 }

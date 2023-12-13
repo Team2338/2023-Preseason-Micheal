@@ -1,14 +1,12 @@
-package team.gif.robot.commands.drivetrain;
+package team.gif.robot.commands.autos;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Robot;
 
-/**
- * Command to automatically drive arcade based on the drivers left joystick.
- */
-public class DriveArcade extends CommandBase {
+public class AutoForward extends CommandBase {
 
-    public DriveArcade() {
+    public AutoForward() {
         super();
         addRequirements(Robot.drivetrain);
         //addRequirements(Robot.climber); // uncomment
@@ -16,25 +14,29 @@ public class DriveArcade extends CommandBase {
 
     // Called when the command is initially scheduled.
     @Override
-    public void initialize() {}
+    public void initialize() {
+
+        System.out.println("runnging drivetrain");
+    }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        double speed = Robot.oi.driver.getLeftX();
-        double rot = Robot.oi.driver.getLeftY();
-        Robot.drivetrain.driveArcade(rot, speed);
+        Robot.drivetrain.driveArcade(-0.8, -0.1); //TODO: keep straight using pigeon
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
     @Override
     public boolean isFinished() {
-        return false;
+        //TODO: Stop after X seconds
+        return (Timer.getMatchTime()) < 13.3; //Two seconds
     }
 
     // Called when the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-//        Robot.drivetrain.driveArcade(0,0);
+
+        System.out.println("drivetrain done");
+        Robot.drivetrain.driveArcade(0, 0);
     }
 }

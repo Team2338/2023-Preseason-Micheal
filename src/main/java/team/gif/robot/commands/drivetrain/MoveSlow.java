@@ -52,7 +52,7 @@ public class MoveSlow extends CommandBase {
             System.out.println("left");
         }
 
-        Robot.drivetrain.driveArcade(rotation, -speed);
+        Robot.drivetrain.driveArcade(-speed, rotation);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
