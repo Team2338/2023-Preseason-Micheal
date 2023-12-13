@@ -2,6 +2,7 @@ package team.gif.robot;
 
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import team.gif.robot.commands.arm.OverrideArm;
 import team.gif.robot.commands.drivetrain.MoveSlow;
 import team.gif.robot.commands.arm.AdvanceLimit;
 import team.gif.robot.commands.arm.ZeroEncoder;
@@ -98,5 +99,7 @@ public class OI {
         dDPadRight.whileTrue(new MoveSlow(1));
         dDPadDown.whileTrue(new MoveSlow(2));
         dDPadLeft.whileTrue(new MoveSlow(3));
+
+        aStart.whileTrue(new OverrideArm());
     }
 }

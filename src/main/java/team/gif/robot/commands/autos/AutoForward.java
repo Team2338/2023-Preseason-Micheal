@@ -6,7 +6,6 @@ import team.gif.robot.Robot;
 
 public class AutoForward extends CommandBase {
 
-    private double startTime;
     public AutoForward() {
         super();
         addRequirements(Robot.drivetrain);
@@ -16,25 +15,28 @@ public class AutoForward extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        startTime = Timer.getFPGATimestamp();
+
+        System.out.println("runnging drivetrain");
     }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        Robot.drivetrain.driveArcade(0, 0.80); //TODO: keep straight using pigeon
+        Robot.drivetrain.driveArcade(-0.8, -0.1); //TODO: keep straight using pigeon
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
     @Override
     public boolean isFinished() {
         //TODO: Stop after X seconds
-        return (Timer.getFPGATimestamp() - startTime) > 2; //Two seconds
+        return (Timer.getMatchTime()) < 13.3; //Two seconds
     }
 
     // Called when the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+
+        System.out.println("drivetrain done");
         Robot.drivetrain.driveArcade(0, 0);
     }
 }

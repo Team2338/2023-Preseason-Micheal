@@ -23,7 +23,7 @@ public class DriveArcade extends CommandBase {
     public void execute() {
         double speed = Robot.oi.driver.getLeftX();
         double rot = Robot.oi.driver.getLeftY();
-        Robot.drivetrain.driveArcade(speed, rot);
+        Robot.drivetrain.driveArcade(rot, speed);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.

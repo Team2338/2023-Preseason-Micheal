@@ -15,7 +15,7 @@ import team.gif.robot.RobotMap;
 public class Arm extends SubsystemBase {
 
   public TalonSRX winch;
-  private final double armMin = 13875;
+  private final double armMin = 13775;
   private final double[] armMax = {2500, 0, 0};
   private int currentLimitIndex = 0;
   private double currentWinchSpeed;
@@ -50,7 +50,12 @@ public class Arm extends SubsystemBase {
   public void zeroEncoder() {
     winch.setSelectedSensorPosition(0);
   }
-
+  public void disableLimit() {
+    winch.configReverseSoftLimitEnable(false);
+  }
+  public void enableLimit() {
+    winch.configReverseSoftLimitEnable(true, 10);
+  }
   /**
    *
    * @return double: the current value of the arm encoder

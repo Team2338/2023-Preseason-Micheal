@@ -6,7 +6,6 @@ import team.gif.robot.Robot;
 
 public class AutoEject extends CommandBase {
 
-    private double startTime;
     public AutoEject() {
         super();
         addRequirements(Robot.collector);
@@ -16,25 +15,28 @@ public class AutoEject extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        startTime = Timer.getFPGATimestamp();
     }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        Robot.collector.runCollector(-1);
+
+        System.out.println("ejecting");
+        Robot.collector.runCollector(-0.5);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
     @Override
     public boolean isFinished() {
         //TODO: Set seconds
-        return (Timer.getFPGATimestamp() - startTime) > 5;
+        return (Timer.getMatchTime()) < 10;
     }
 
     // Called when the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+
+        System.out.println("done eject");
         Robot.collector.runCollector(0);
     }
 }
