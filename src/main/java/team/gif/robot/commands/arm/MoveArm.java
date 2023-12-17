@@ -20,7 +20,7 @@ public class MoveArm extends CommandBase {
     public void execute() {
         //TODO: This needs values
         double commandSpeed = Robot.oi.aux.getRightY();
-
+commandSpeed = commandSpeed /2;
 
         Robot.arm.moveArm(commandSpeed);
     }

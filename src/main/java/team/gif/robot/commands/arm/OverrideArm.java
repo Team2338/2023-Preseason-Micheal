@@ -14,7 +14,7 @@ public class OverrideArm extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        Robot.arm.disableLimit();
+//        Robot.arm.disableLimit();
     }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
@@ -32,6 +32,6 @@ public class OverrideArm extends CommandBase {
     // Called when the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        Robot.arm.enableLimit();
+//        Robot.arm.enableLimit();
     }
 }

@@ -1,5 +1,6 @@
 package team.gif.robot.commands.autos;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Robot;
 
@@ -27,7 +28,7 @@ public class AutoArm extends CommandBase {
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
     @Override
     public boolean isFinished() {
-        return Robot.arm.getEncoder() > target;
+        return (Timer.getMatchTime()) < 11.6;
     }
 
     // Called when the command ends or is interrupted.

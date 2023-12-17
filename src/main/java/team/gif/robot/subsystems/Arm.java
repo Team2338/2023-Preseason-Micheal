@@ -25,18 +25,18 @@ public class Arm extends SubsystemBase {
 
     winch.configFactoryDefault();
 
-    winch.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+//    winch.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
 
     winch.setNeutralMode(NeutralMode.Brake);
 
-    winch.setSelectedSensorPosition(0);
-    winch.setSensorPhase(true);
-
-    winch.configForwardSoftLimitThreshold(armMin, 10);
-    winch.configReverseSoftLimitThreshold(armMax[0], 10);
-
-    winch.configReverseSoftLimitEnable(true, 10);
-    winch.configForwardSoftLimitEnable(true, 10);
+//    winch.setSelectedSensorPosition(0);
+//    winch.setSensorPhase(true);
+//
+//    winch.configForwardSoftLimitThreshold(armMin, 10);
+//    winch.configReverseSoftLimitThreshold(armMax[0], 10);
+//
+//    winch.configReverseSoftLimitEnable(false, 10);
+//    winch.configForwardSoftLimitEnable(false, 10);
   }
 
   /**
@@ -51,10 +51,10 @@ public class Arm extends SubsystemBase {
     winch.setSelectedSensorPosition(0);
   }
   public void disableLimit() {
-    winch.configReverseSoftLimitEnable(false);
+//    winch.configReverseSoftLimitEnable(false);
   }
   public void enableLimit() {
-    winch.configReverseSoftLimitEnable(true, 10);
+//    winch.configReverseSoftLimitEnable(true, 10);
   }
   /**
    *
