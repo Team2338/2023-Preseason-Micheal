@@ -44,18 +44,18 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    pigeon = new Pigeon(new TalonSRX(RobotMap.LEFT_MOTOR_ID));
-    pigeon.addToShuffleboard("TEAM DOMINIC", "heading");
+//    pigeon = new Pigeon(new TalonSRX(RobotMap.LEFT_MOTOR_ID));
+//    pigeon.addToShuffleboard("TEAM DOMINIC", "heading");
     drivetrain = new Drivetrain();
     drivetrain.setDefaultCommand(new DriveArcade());
 
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     robotContainer = new RobotContainer();
-    collector = new Collector();
-    collector.setDefaultCommand(new RunCollector());
-    arm = new Arm();
-    arm.setDefaultCommand(new MoveArm());
+//    collector = new Collector();
+//    collector.setDefaultCommand(new RunCollector());
+//    arm = new Arm();
+//    arm.setDefaultCommand(new MoveArm());
     oi = new OI();
     uiSmartDashboard = new UiSmartDashboard();
     ui = new UI();

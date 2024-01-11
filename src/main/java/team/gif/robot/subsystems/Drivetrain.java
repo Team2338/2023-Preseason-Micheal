@@ -33,6 +33,7 @@ public class Drivetrain extends SubsystemBase {
   public void driveArcade(double rot, double spd) {
     drive.arcadeDrive(spd, rot);
   }
+  public void driveTank(double left, double right) { drive.tankDrive(left, right);}
 
 
 

@@ -91,15 +91,15 @@ public class OI {
          *   aX.onTrue(new PrintCommand("aX"));
          */
 
-        aY.onTrue(new AdvanceLimit(1));
-        aB.onTrue(new AdvanceLimit(2));
-        dStart.onTrue(new ZeroEncoder());
+//        aY.onTrue(new AdvanceLimit(1));
+//        aB.onTrue(new AdvanceLimit(2));
+//        dStart.onTrue(new ZeroEncoder());
 
         dDPadUp.whileTrue(new MoveSlow(0));
         dDPadRight.whileTrue(new MoveSlow(1));
         dDPadDown.whileTrue(new MoveSlow(2));
         dDPadLeft.whileTrue(new MoveSlow(3));
 
-        aStart.whileTrue(new OverrideArm());
+//        aStart.whileTrue(new OverrideArm());
     }
 }
