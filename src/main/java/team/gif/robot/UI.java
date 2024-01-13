@@ -26,19 +26,19 @@ public class UI {
 
     public UI() {
         ShuffleboardTab shuffleboardTab = Shuffleboard.getTab("TEAM DOMINIC");
-//
-//        motor1 = shuffleboardTab.add("Motor 1", .5)
-//                .withWidget(BuiltInWidgets.kNumberSlider)
-//                .withProperties(Map.of("min", 0, "max", 1))
-//                        .getEntry();
-//        motor2 = shuffleboardTab.add("Motor 2", .5)
-//                .withWidget(BuiltInWidgets.kNumberSlider)
-//                .withProperties(Map.of("min", 0, "max", 1))
-//                .getEntry();
-//        motor3 = shuffleboardTab.add("Motor 3", .5)
-//                .withWidget(BuiltInWidgets.kNumberSlider)
-//                .withProperties(Map.of("min", 0, "max", 1))
-//                .getEntry();
+
+        motor1 = shuffleboardTab.add("Motor 1", .5)
+                .withWidget(BuiltInWidgets.kNumberSlider)
+                .withProperties(Map.of("min", 0, "max", 1))
+                        .getEntry();
+        motor2 = shuffleboardTab.add("Motor 2", .5)
+                .withWidget(BuiltInWidgets.kNumberSlider)
+                .withProperties(Map.of("min", 0, "max", 1))
+                .getEntry();
+        motor3 = shuffleboardTab.add("Motor 3", .5)
+                .withWidget(BuiltInWidgets.kNumberSlider)
+                .withProperties(Map.of("min", 0, "max", 1))
+                .getEntry();
 
     }
 }

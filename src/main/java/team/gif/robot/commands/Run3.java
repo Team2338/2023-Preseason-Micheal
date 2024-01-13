@@ -18,7 +18,7 @@ public class Run3 extends CommandBase {
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        Robot.motors.run3(0.5);
+        Robot.motors.run3(Robot.ui.motor3.getDouble(1.0));
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
