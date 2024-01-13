@@ -21,8 +21,8 @@ public class DriveArcade extends CommandBase {
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        double speed = Robot.oi.driver.getLeftX();
-        double rot = Robot.oi.driver.getLeftY();
+        double speed = Robot.oi.driver.getLeftY();
+        double rot = Robot.oi.driver.getRightX();
         Robot.drivetrain.driveArcade(rot, speed);
     }
 

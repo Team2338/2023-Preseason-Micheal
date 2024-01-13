@@ -2,10 +2,10 @@ package team.gif.robot;
 
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import team.gif.robot.commands.arm.OverrideArm;
+import team.gif.robot.commands.Run1;
+import team.gif.robot.commands.Run2;
+import team.gif.robot.commands.Run3;
 import team.gif.robot.commands.drivetrain.MoveSlow;
-import team.gif.robot.commands.arm.AdvanceLimit;
-import team.gif.robot.commands.arm.ZeroEncoder;
 
 public class OI {
     /*
@@ -91,15 +91,13 @@ public class OI {
          *   aX.onTrue(new PrintCommand("aX"));
          */
 
-//        aY.onTrue(new AdvanceLimit(1));
-//        aB.onTrue(new AdvanceLimit(2));
-//        dStart.onTrue(new ZeroEncoder());
-
         dDPadUp.whileTrue(new MoveSlow(0));
         dDPadRight.whileTrue(new MoveSlow(1));
         dDPadDown.whileTrue(new MoveSlow(2));
         dDPadLeft.whileTrue(new MoveSlow(3));
 
-//        aStart.whileTrue(new OverrideArm());
+        dA.whileTrue(new Run1());
+        dB.whileTrue(new Run2());
+        dX.whileTrue(new Run3());
     }
 }

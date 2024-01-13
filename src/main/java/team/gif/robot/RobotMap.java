@@ -8,6 +8,6 @@ public abstract class RobotMap {
 
     public static final int COLLECTOR_ID = 13;
     public static final int WINCH_MOTOR_ID = 6;
-    public static final int LEFT_MOTOR_ID = 41;
+    public static final int LEFT_MOTOR_ID = 13;
     public static final int RIGHT_MOTOR_ID = 1;
 }

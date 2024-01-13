@@ -4,15 +4,10 @@
 
 package team.gif.robot;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import team.gif.robot.commands.autos.AutosGroup;
-import team.gif.robot.commands.collector.RunCollector;
-import team.gif.robot.subsystems.Collector;
-import team.gif.robot.commands.arm.MoveArm;
-import team.gif.robot.subsystems.Arm;
+import team.gif.robot.subsystems.Motors;
 import team.gif.robot.commands.drivetrain.DriveArcade;
 import team.gif.robot.subsystems.Drivetrain;
 import team.gif.robot.subsystems.driver.Pigeon;
@@ -27,14 +22,9 @@ public class Robot extends TimedRobot {
   private static Command autonomousCommand;
   private RobotContainer robotContainer;
   public static OI oi;
-
-  public static Collector collector;
+  public static Motors motors;
   public static Drivetrain drivetrain;
-  public static Arm arm;
-
   public static Pigeon pigeon;
-
-
   public static UiSmartDashboard uiSmartDashboard;
   public static UI ui;
 
@@ -46,20 +36,18 @@ public class Robot extends TimedRobot {
   public void robotInit() {
 //    pigeon = new Pigeon(new TalonSRX(RobotMap.LEFT_MOTOR_ID));
 //    pigeon.addToShuffleboard("TEAM DOMINIC", "heading");
-    drivetrain = new Drivetrain();
-    drivetrain.setDefaultCommand(new DriveArcade());
+
 
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     robotContainer = new RobotContainer();
-//    collector = new Collector();
-//    collector.setDefaultCommand(new RunCollector());
-//    arm = new Arm();
-//    arm.setDefaultCommand(new MoveArm());
+    drivetrain = new Drivetrain();
+    drivetrain.setDefaultCommand(new DriveArcade());
+    motors = new Motors();
     oi = new OI();
     uiSmartDashboard = new UiSmartDashboard();
     ui = new UI();
-    autonomousCommand = new AutosGroup();
+//    autonomousCommand = new AutosGroup();
   }
 
   /**
@@ -77,8 +65,7 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
 
-    uiSmartDashboard.updateUI();
-    System.out.println(Robot.pigeon.get360Heading());
+//    uiSmartDashboard.updateUI();
 
   }
 
@@ -92,7 +79,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    new AutosGroup().schedule();
+//    new AutosGroup().schedule();
 
   }
 

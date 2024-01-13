@@ -1,41 +1,35 @@
-package team.gif.robot.commands.autos;
+package team.gif.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Robot;
 
-public class AutoArm extends CommandBase {
+public class Run3 extends CommandBase {
 
-    private double target = 10405;
-    public AutoArm() {
+    public Run3() {
         super();
-       addRequirements(Robot.arm);
+        addRequirements(Robot.motors);
         //addRequirements(Robot.climber); // uncomment
     }
 
     // Called when the command is initially scheduled.
     @Override
-    public void initialize() {
-        System.out.println("auto arm");
-    }
+    public void initialize() {}
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        Robot.arm.moveArm(0.5);
+        Robot.motors.run3(0.5);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
     @Override
     public boolean isFinished() {
-        return (Timer.getMatchTime()) < 11.6;
+        return false;
     }
 
     // Called when the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-
-        System.out.println("end auto arm");
-        Robot.arm.moveArm(0);
+        Robot.motors.run3(0);
     }
 }

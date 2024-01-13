@@ -11,14 +11,34 @@ package team.gif.robot;
  *   There is many more functions that you can use, example addString, addNumber, etc.
  */
 
+import edu.wpi.first.networktables.GenericEntry;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 
+import java.util.Map;
+
 public class UI {
+    public GenericEntry motor1;
+    public GenericEntry motor2;
+    public GenericEntry motor3;
+
     public UI() {
         ShuffleboardTab shuffleboardTab = Shuffleboard.getTab("TEAM DOMINIC");
+//
+//        motor1 = shuffleboardTab.add("Motor 1", .5)
+//                .withWidget(BuiltInWidgets.kNumberSlider)
+//                .withProperties(Map.of("min", 0, "max", 1))
+//                        .getEntry();
+//        motor2 = shuffleboardTab.add("Motor 2", .5)
+//                .withWidget(BuiltInWidgets.kNumberSlider)
+//                .withProperties(Map.of("min", 0, "max", 1))
+//                .getEntry();
+//        motor3 = shuffleboardTab.add("Motor 3", .5)
+//                .withWidget(BuiltInWidgets.kNumberSlider)
+//                .withProperties(Map.of("min", 0, "max", 1))
+//                .getEntry();
 
-        shuffleboardTab.addDouble("Arm Position", Robot.arm::getEncoder);
-        shuffleboardTab.addDouble("Arm Speed", Robot.arm::getWinchSpeed);
     }
 }
