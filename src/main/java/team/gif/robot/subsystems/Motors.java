@@ -18,9 +18,11 @@ public class Motors extends SubsystemBase {
   private TalonSRX motor2;
   private CANSparkMax motor3;
   public Motors() {
-    collector = new TalonSRX(RobotMap.COLLECTOR_ID);
-    collector.configFactoryDefault();
-    collector.setInverted(true);
+
+
+    motor1.configFactoryDefault();
+    motor2.configFactoryDefault();
+    motor3.restoreFactoryDefaults();
 
     motor1 = new TalonSRX(9);
     motor2 = new TalonSRX(6);

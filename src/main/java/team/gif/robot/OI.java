@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import team.gif.robot.commands.Run1;
 import team.gif.robot.commands.Run2;
 import team.gif.robot.commands.Run3;
+import team.gif.robot.commands.StopAll;
 import team.gif.robot.commands.drivetrain.MoveSlow;
 
 public class OI {
@@ -96,8 +97,9 @@ public class OI {
         dDPadDown.whileTrue(new MoveSlow(2));
         dDPadLeft.whileTrue(new MoveSlow(3));
 
-        dA.whileTrue(new Run1());
-        dB.whileTrue(new Run2());
-        dX.whileTrue(new Run3());
+        dA.onTrue(new Run1());
+        dB.onTrue(new Run2());
+        dX.onTrue(new Run3());
+        dY.whileTrue(new StopAll());
     }
 }
